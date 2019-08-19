@@ -8,6 +8,8 @@ describe("Function test", function(){
     
     ];
 
+    var tablica = [];
+
     function checkItTwo(passengers){
         return (!passengers.ticket);
     };
@@ -21,6 +23,14 @@ describe("Function test", function(){
         return true;
     };
 
+    function getNames(passengers){
+        for(let i = 0; i < passengers.length; i++){
+        var name = passengers[i].name;
+        tablica[i] = name;
+        }
+		return tablica; 
+		return name;
+    }
     it("should go thru array and return false", function() {
     var check = ifItCan(passengers, checkItTwo);
 
@@ -31,5 +41,13 @@ describe("Function test", function(){
         var checkTwp = ifItCan(passengers, checkItTwo);
         
         expect(checkTwp).not.toBe(true);
+    })
+
+    it("shoul contain kowalski", function(){
+        var name = getNames(passengers);
+
+        expect(name).toContain("jerzy kierzy");
+        expect(name).toContain("paweł marow");
+        expect(name).not.toContain("mariola dola");
     })
 })
